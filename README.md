@@ -33,10 +33,10 @@ A browser is a fancy API requester. API is a gateway to the system.
   ***4 Things to remember:***
   <details>
     <summary>Click to expand for more details</summary>
-      # API testing is faster than browser automation
-      # When you see "API" think "A gateway to System."
-      # If it is not exposed by the API, you can't test it
-      # If you need to validate UI behavior or dynamically loaded data, use browser automation instead
+    * API testing is faster than browser automation
+    * When you see "API" think "A gateway to System."
+    * If it is not exposed by the API, you can't test it
+    * If you need to validate UI behavior or dynamically loaded data, use browser automation instead
   </details>
   
 
