@@ -1,0 +1,128 @@
+<html>
+    <head>
+        <title>Add a new resource</title>
+        <script type="text/javascript" src="{{ url_for('static', filename='scripts/library.js') }}"></script>
+    </head>
+
+    <body>
+
+    <form>
+        <h3>Add Library Resource: </h3><br />
+        <label>Title</label>
+        <input id="title" name="title" type="text" value="" /> <br />
+        <div id="titleMissingBanner" class="alert" style="display:none">
+            <h4>Please provide a title</h4>
+        </div>
+        <label>Author (First)</label>
+        <input id="authorFirst" name="authorFirst" type="text" value="" /> <br />
+        <label>Author (Middle)</label>
+        <input id="authorMiddle" name="authorMiddle" type="text" value="" /> <br />
+        <label>Author (Last)</label>
+        <input id="authorLast" name="authorLast" type="text" value="" /> <br />
+        <div id="authorLastMissingBanner" class="alert" style="display:none">
+            <h4>Please provide a last name for the author</h4>
+        </div>
+        <label>Edition</label>
+        <input id="edition" name="edition" type="text" value="" /> <br />
+        <label>ISBN-10</label>
+        <input id="isbn10" name="isbn10" type="text" value="" /> <br />
+        <label>ISBN-13</label>
+        <input id="isbn13" name="isbn13" type="text" value="" /> <br />
+        <div id="isbnMissingBanner" class="alert" style="display:none">
+            <h4>Please provide either an ISBN-10 or ISBN-13 for the resource</h4>
+        </div>
+
+        <div id="resourceAddFailedBanner" class="alert" style="display:none">
+            <h4>There was a problem adding the resource: </h4>
+        </div>
+
+        <div id="resourceAddedBanner" class="alert" style="display:none">
+            <h4>Resource added successfully!</h4>
+        </div>
+
+    </form>
+    <button value="Submit" onclick=addResource()>Submit</button>
+    <button value="Back" onclick="window.location.href = '/search';">Back to Search</button>
+    
+
+    <script>
+        function addResource() {
+            titleInput = document.getElementById("title");
+            title = titleInput.value;
+            authorFirstInput = document.getElementById("authorFirst");
+            authorFirst = authorFirstInput.value;
+            authorMiddleInput = document.getElementById("authorMiddle");
+            authorMiddle = authorMiddleInput.value;
+            authorLastInput = document.getElementById("authorLast");
+            authorLast = authorLastInput.value;
+            editionInput = document.getElementById("edition");
+            edition = editionInput.value;
+            isbn10Input = document.getElementById("isbn10");
+            isbn10 = isbn10Input.value;
+            isbn13Input = document.getElementById("isbn13");
+            isbn13 = isbn13Input.value;
+
+            titleMissingBanner = document.getElementById("titleMissingBanner");
+            authorLastMissingBanner = document.getElementById("authorLastMissingBanner");
+            isbnMissingBanner = document.getElementById("isbnMissingBanner");
+
+            resourceAddFailedBanner = document.getElementById("resourceAddFailedBanner");
+            successfullyAddedBanner = document.getElementById("resourceAddedBanner");
+
+            titleMissingBanner.style.display = "none";
+            authorLastMissingBanner.style.display = "none";
+            isbnMissingBanner.style.display = "none";
+            successfullyAddedBanner.style.display = "none";
+            resourceAddFailedBanner.style.display = "none";
+
+            var errorFound = false;
+
+            // Perform checks
+            if (title.length < 1) {
+                titleMissingBanner.style.display = "block";
+                errorFound = true;
+            }
+
+            if (authorLast.length < 1) {
+                authorLastMissingBanner.style.display = "block";
+                errorFound = true;
+            }
+
+            if (isbn10.length < 1 && isbn13.length < 1) {
+                isbnMissingBanner.style.display = "block";
+                errorFound = true;
+            }
+
+            if (errorFound) {
+                return;
+            }
+
+            var resp = postResource(title, authorFirst, authorMiddle, authorLast, edition, isbn10, isbn13);
+
+            if (resp.status == 200) {
+                // Clear out inputs on successful add
+                title = "";
+                authorFirst = "";
+                authorMiddle = "";
+                authorLast = "";
+                edition = "";
+                isbn10 = "";
+                isbn13 = "";
+
+                // Display successful add banner
+                successfullyAddedBanner.style.display = "block";
+
+            } else {
+                console.log(resp);
+                console.log(resp.body);
+                console.log(resp.status);
+                console.log(resp.error);
+                resourceAddFailedBanner.value += resp.body;
+                resourceAddFailedBanner.style.display = "block";
+            }
+            
+
+        }
+    </script>
+    </body>
+</html>
