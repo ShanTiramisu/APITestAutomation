@@ -1,4 +1,4 @@
-# APITestAutomation
+# API Test Automation
 Fast, reliable testing using Python and Pytest
 ###
 API - Application Programming Interface (The Gateway to a system)
@@ -9,11 +9,14 @@ API valuable：
 - faster than tests using browser automation
 - much faster
 - Seriously, like 80% faster
--- no startup time for browser
+- --no startup time for browser
 -- no logging in via the browser for every single test case
 -- no waiting for large element(like images) to downloadand display
--- no waiting on css to render
--- no waiting on javscript calls
+-- no waiting on CSS to render
+-- no waiting on JavaScript calls
 - less brittle than browser automation
 -- doesn't break if elements on a page move or change
+-- Exercises the minimum code to test cthe omponent
+
+  
   
