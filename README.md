@@ -30,6 +30,17 @@ A browser is a fancy API requester. API is a gateway to the system.
 - Unit Test is for all the functions and things that are not exposed by the API, but we still want them to work
   <img width="936" height="508" alt="unittest" src="https://github.com/user-attachments/assets/ebc0e797-5107-4eb5-9283-2228777f7bcd" />
 
+  ***4 Things to remember:***
+  <details>
+    <summary>Click to expand for more details</summary>
+    ### Hidden Content Header
+    - API testing is faster than browser automation
+    - When you see "API" think "A gateway to System."
+    - If it is not exposed by the API, you can't test it
+    - If you need to validate UI behavior or dynamically loaded data, use browser automation instead
+  </details>
+  
+
   
 
   
