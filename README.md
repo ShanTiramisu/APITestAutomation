@@ -25,9 +25,9 @@ A browser is a fancy API requester. API is a gateway to the system.
 | test suite that wastes a lot of time and breaks often  |                  |
 
 **Test case strategies:**
-User experience: browser and mobile automation
-API contracts: API test
-all the functions and things that are not exposed by the API, but we still want them to work: Unit Test
+- Browser and mobile automation is for User experience
+- API test is for API contracts
+- Unit Test is for all the functions and things that are not exposed by the API, but we still want them to work
   <img width="936" height="508" alt="unittest" src="https://github.com/user-attachments/assets/ebc0e797-5107-4eb5-9283-2228777f7bcd" />
 
   
