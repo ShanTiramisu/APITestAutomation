@@ -16,7 +16,12 @@ API is valuable：
   - no waiting on JavaScript calls
 - less brittle than browser automation
   - doesn't break if elements on a page move or change
-  - Exercises the minimum code to test cthe omponent
+  - Exercises the minimum code to test the component
 
+|                             Browser                    |        API       |
+| ------------------------------------------------------ | ---------------- |
+|  UI behavior                                           | Everything else  |
+| Validate dynamic context                               |                  |
+| test suite that wastes a lot of time and breaks often  |                  |
   
   
